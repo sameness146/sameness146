@@ -1,0 +1,89 @@
+#include <stdio.h>
+int STACKMAX = 7;
+int numOfElements = 0;
+int stackarr[7];
+
+void push(int value){
+    if (numOfElements > STACKMAX){
+        printf("Max stack size reached\n");
+        return;
+    }
+    stackarr[numOfElements] = value;
+    numOfElements++;
+    return;
+}
+
+void pop(){
+    if (numOfElements == 0){
+        printf("Stack is empty\n");
+        return;
+    }
+    stackarr[numOfElements--] = 0;
+}
+
+int unshift(int value){
+    if ((numOfElements+1) > STACKMAX){
+        printf("Max stack size reached\n");
+        return -1;
+    }
+    for (int i=numOfElements;i>=0;i--)
+    {
+        stackarr[i+1]=stackarr[i];
+    }
+    stackarr[0] = value;
+    return ++numOfElements;
+}
+
+void splice(int index,int flag, int value){
+    if (flag == 0){
+        for (int i=index;i<numOfElements;i++){
+            stackarr[index+1] = stackarr[index];
+        }
+        numOfElements++;
+    }
+    stackarr[index] = value;
+}
+
+void printStackElements(){
+    for (int i=0;i<numOfElements;i++)
+    {
+        printf("Stack Array[%d]: %d\n", i,stackarr[i]);
+    }
+}
+
+int main(void) {
+    
+    push(20);
+    push(5);
+    push(350);
+    push(6);
+    push(8);
+    push(52);
+    push(22);
+    push(47);
+    push(78);
+    printStackElements();
+    printf("-----------\n");
+    pop();
+    pop();
+    printStackElements();
+    printf("-----------\n");
+    int len = unshift(62);
+    printStackElements();
+    printf("-----------\n");
+    splice(2,1,33);
+    printStackElements();
+    printf("-----------\n");
+    splice(4,0,77);
+    printStackElements();
+    printf("-----------\n");
+    pop();
+    printStackElements();
+    printf("-----------\n");
+    push(39);
+    printStackElements();
+    printf("-----------\n");
+    
+    
+    return 0;
+}
