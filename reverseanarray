@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+void reverseString(char *str, int len){
+    char temp;
+    int j = (len-1);
+    for (int i=0;i<len/2;i++)
+    {
+        temp = *(str + i);
+        *(str + i) = *(str + j);
+        *(str + j) = temp;
+        j--;
+    }
+    return;
+    
+}
+
+
+int main(void) {
+
+    char str[100];
+    printf("Enter string to be reversed\n");
+    scanf("%[^\n]s", str);
+    printf("String to be reversed: %s, len %d\n", str, strlen(str));
+    
+    reverseString(str, strlen(str));
+    printf("New str: %s\n", str);
+    return 0;
+}
