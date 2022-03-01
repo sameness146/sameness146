@@ -1,6 +1,7 @@
 // merge sorted array
 // a= [0,3,4,31]; b=[4,6,30]
 // op = [0,3,4,4,6,30,31]
+// CHECK FOR ERROR CASES SUCH AS EMPTY ARRAY
 #include <stdio.h>
 #include <stdio.h>
 int STACKMAX = 100;
