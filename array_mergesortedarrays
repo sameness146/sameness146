@@ -1,0 +1,71 @@
+// merge sorted array
+// a= [0,3,4,31]; b=[4,6,30]
+// op = [0,3,4,4,6,30,31]
+#include <stdio.h>
+#include <stdio.h>
+int STACKMAX = 100;
+int numOfElements = 0;
+int C[100];
+
+void mergeSortedArrays(int *a, int *b, int lena, int lenb){
+    int i= 0;
+    int j=0;
+    
+    // outside loop through array b
+    while (i<lena && j<lenb ){
+        //if (i< lena){   // check if within limits for array a; if not then array b size if greater than a
+            if (*(b+j) < *(a+i)){   // case 1: element in b is smaller than a, then add to new array and increment b
+                C[numOfElements++] = *(b+j);
+                j++;
+            }
+            
+            /*else if (*(b+j) == *(a+i)){   // case 2: both elements are equal, add both to new array and increment both
+                C[numOfElements++] = *(b+j);
+                C[numOfElements++] = *(a+i);
+                i++;
+                j++;
+            }*/
+            
+            else {   // case 3: element in b is larger than a, so add a's element to new array and increment a
+                C[numOfElements++] = *(a+i);
+                i++;
+            }
+        /*}
+        else{
+            // add remaining b's elements 
+            for (int temp=j;temp<lenb;temp++)
+                C[numOfElements++] = *(b + temp);
+            break;
+        }*/
+        
+    }
+    
+    // add remaining a's elements if left
+    while (i < lena){
+        C[numOfElements++] = *(a+i);
+        i++;
+    }
+    
+    // add remaining b's elements if left
+    while (j < lenb){
+        C[numOfElements++] = *(b+j);
+        j++;
+    }
+        
+    
+}
+
+
+int main(void) {
+    int a[7] = {2,6,30,33,71,73,75};
+    int b[9] = {0,1,2,4,31,72,74,80,97};
+    
+    mergeSortedArrays(a,b,sizeof(a)/sizeof(int),sizeof(b)/sizeof(int));
+    
+    for (int i=0;i<(numOfElements);i++){
+        printf("%d, ",C[i]);
+    }
+    
+    
+    return 0;
+}
