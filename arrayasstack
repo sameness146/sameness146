@@ -21,8 +21,7 @@ void pop(){
     stackarr[numOfElements--] = 0;
 }
 
-// if flag is 0, then insert the item and shift remainng items
-// if flag is 1, then replace the item at given index
+
 int unshift(int value){
     if ((numOfElements+1) > STACKMAX){
         printf("Max stack size reached\n");
@@ -36,6 +35,8 @@ int unshift(int value){
     return ++numOfElements;
 }
 
+// if flag is 0, then insert the item and shift remainng items
+// if flag is 1, then replace the item at given index
 void splice(int index,int flag, int value){
     if (flag == 0){
         for (int i=index;i<numOfElements;i++){
