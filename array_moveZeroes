@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+/**
+ * Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+ * Note that you must do this in-place without making a copy of the array.
+ * 
+ * Example 1:
+ * Input: nums = [0,1,0,3,12]
+ * Output: [1,3,12,0,0]
+ * 
+ */
+
+void moveZeroes(int* nums, int numsSize){
+    for (int i=0; i<numsSize; i++){
+        if (nums[i] == 0){
+            for(int j=i; j<numsSize-1; j++){
+                nums[j] = nums[j+1];
+                nums[j+1] = 0;
+            }
+        }
+    }
+
+}
+
+int main(void){
+    int arr[5] = {0,1,0,3,12};
+    //int target = 9;
+    int numElements = 5;
+
+    /*printf("Enter num of elements\n");
+    scanf("%d", &numElements);
+    
+    int *arr = malloc(numElements*sizeof(int));
+    srand ( time(NULL) );
+    
+    for (int i=0;i<numElements;i++){
+        arr[i] = (rand() - RAND_MAX/2) % 10;
+        printf("%d,",arr[i]);
+    }
+    printf("\n");*/
+    
+    moveZeroes(arr, numElements);
+    for (int i=0;i< numElements; i++){
+        printf("arr[%d]:%d,",i,arr[i]);   
+    }
+
+    return 0;
+    
+}
