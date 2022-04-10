@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+/**
+ * Insert and print linked list.
+ * 
+ */
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node* Insert(struct Node* head, int data){
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+    temp->data = data;
+    temp->next = head;
+    return temp;
+}
+
+void Print(struct Node* head){
+    while(head != NULL){
+        printf("%d\n", head->data);
+        head = head->next;
+    }
+    
+}
+
+int main(void){
+    int numOfElements = 0;
+    struct Node* head = NULL;
+    printf("Enter number of elements you want to insert\n");
+    scanf("%d",&numOfElements);
+    //int data[2]={36,92};
+    struct Node* temp = NULL;
+    
+    for (int i=0; i<numOfElements; i++){
+        int data;
+        printf("Enter data for element %d\n", i);
+        scanf("%d",&data);
+        
+        head = Insert(head, data);
+        
+    }
+    
+    Print(head);
+    
+    return 0;
+}
